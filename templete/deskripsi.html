@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark opacity fixed-top shadow ">
+        <div class="container">
+          <a class="navbar-brand">Detail deskripsi</a>
+          <div class="d-flex">
+            <a class="text-light text-decoration-none me-2 mt-1" href="/preprosesing">Preprosesing</a>
+            <a class="text-light text-decoration-none" href="/"><i class="bi bi-box-arrow-right fs-5 me-2"></i>Keluar</a>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row ms-5 ">
+            <div class="col border-bottom">
+                <h1 class="mt-5">Detail deskripsi</h1>
+            </div>
+        </div>
+        <div class="row ms-5 mt-3 mb-3">
+            <div class="alert alert-warning text-center" role="alert">
+                Peringatan : Hasil Outputnya berupa pernyataan kemungkinan kesehatan  Tingkat Intensitas pada Ibu hamil  , <br>bisa dilihat pada contoh tabel field RiskLevel 
+            </div>
+        </div>
+        <div class="row ms-5 mt-2 mb-3">
+            <div class="col shadow" style="height:400px; overflow-x: scroll;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            {% for column in df.columns%}
+                            <td>{{column}}</td>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(df.index.size) %}
+                        <tr>
+                            {% for j in range(df.columns.size) %}
+                            <td>
+                                {{df.iloc[i,j]}}
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- 
+                 -->
+            </div>
+        </div>
+       
+
+        <div class="p-5 ms-5 border mb-5 shadow" style="background-color: #eee;" >
+            <div class="row ms-5">
+                <div class="col">
+                    <h4>Input apa yang anda harus masukan :</h4>
+                    <p>Data telah dikumpulkan dari berbagai rumah sakit, klinik komunitas, layanan kesehatan ibu melalui sistem pemantauan risiko berbasis IoT.</p>
+                </div>
+            </div>
+            <div class="row ms-5 mt-3">
+                <div class="col">
+                    1. Masukan nama 
+                </div>
+            </div>
+            <div class="row ms-5">
+                <div class="col">
+                    2. Tabel age : Masukan umur anda
+                </div>
+            </div>
+            <div class="row ms-5">
+                <div class="col">
+                    3. Tabel Tekanan Darah Sistolik (SystolicBP) :  Nilai atas Tekanan Darah dalam mmHg, atribut penting lainnya selama kehamilan.
+                </div>
+            </div>
+            <div class="row ms-5">
+                <div class="col">
+                    4. Tabel DiastolicBP : Nilai Tekanan Darah yang lebih rendah dalam mmHg, atribut penting lainnya selama kehamilan.
+                </div>
+            </div>
+            <div class="row ms-5">
+                <div class="col">
+                    5. Tabel BS: Kadar glukosa darah dinyatakan dalam konsentrasi molar, mmol/L.
+                </div>
+            </div>
+            <div class="row ms-5">
+                <div class="col">
+                    6. Tabel BodyTemp : Input Ukuran suhu badan ibu saat ini
+                </div>
+            </div>
+            <div class="row ms-5 mb-5">
+                <div class="col">
+                    7. Tabel Detak Jantung (HeartRate): Detak jantung istirahat normal dalam denyut per menit.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

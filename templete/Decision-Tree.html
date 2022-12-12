@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark opacity fixed-top shadow ">
+        <div class="container">
+          <a class="navbar-brand">Decision Tree</a>
+          <div class="d-flex">
+            <a class="text-light text-decoration-none pt-1 me-3" href="/deskripsi">deskripsi</a>
+            <a class="text-light text-decoration-none" href="/"><i class="bi bi-box-arrow-right fs-5 me-2"></i>Keluar</a>
+          </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row ">
+            <div class="col border-bottom">
+                <h1 class="mt-5">Prediksi Penyakit Jantung</h1>
+            </div>
+        </div>
+        
+        <form method="POST" action="/K-Nearest-Neighbor">
+            <div class="row justify-content-center mt-5 pb-5">
+                <div class="col-7">
+                    <div class="mb-3 mt-2">
+                        <label for="nama" class="form-label">Masukan Nama anda</label>
+                        <input type="text" name="nama" class="form-control" id="nama" >
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <label for="Usia" class="form-label">Masukan Usia anda</label>
+                        <input type="number" name="umur" class="form-control" id="Usia" >
+                    </div>
+                    <div class="border p-3 rounded" style="background-color:#eee ;">
+                        <div class="mt-3">
+                            <p>Jenis Kelamin anda</p>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kelamin" value="1" id="kelamin1">
+                            <label class="form-check-label" for="kelamin1">
+                                laki-laki
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="kelamin" value="0" id="kelamin2" checked>
+                            <label class="form-check-label" for="kelamin2">
+                                Perempuan
+                            </label>
+                        </div>
+                    </div>
+                    <div class="border mt-3 p-3 rounded" style="background-color:#eee ;">
+                        <div class="mt-3">
+                            <p>Jenis nyeri dada</p>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="nyeri-data" value="0" id="nyeri-data1">
+                            <label class="form-check-label" for="nyeri-data1">
+                                angina tipikal
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="nyeri-data" value="1" id="nyeri-data2" checked>
+                            <label class="form-check-label" for="nyeri-data2">
+                                angina atipikal
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="nyeri-data" value="2" id="nyeri-data2" checked>
+                            <label class="form-check-label" for="nyeri-data2">
+                                nyeri non-angina
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="nyeri-data" value="3" id="nyeri-data2" checked>
+                            <label class="form-check-label" for="nyeri-data2">
+                                asimtomatik
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <label for="tekanan-darah" class="form-label">Masukan tekanan darah anda</label>
+                        <input type="number" name="tekanan-darah" class="form-control" id="tekanan-darah" >
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <label for="kadar-kolestrol" class="form-label">Masukkan kadar kolesterol darah anda (mg/dL) :</label>
+                        <input type="number" name="kadar-kolestrol" class="form-control" id="kadar-kolestrol" >
+                    </div>
+
+
+                    <div class="border p-3 mb-3 rounded" style="background-color:#eee ;">
+                        <div class="mt-3">
+                            <p>Apakah anda memiliki gula darah lebih dari 120mg/dl ?</p>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gula-darah" value="1" id="kelamin1">
+                            <label class="form-check-label" for="kelamin1">
+                                Iya
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gula-darah" value="0" id="kelamin2" checked>
+                            <label class="form-check-label" for="kelamin2">
+                                Tidak
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <select name="elektro" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>Pilih hasil elektrokardiografi anda :</option>
+                            <option value="0">Normal</option>
+                            <option value="1">ST-T wave abnormality
+                            </option>
+                            <option value="2">Left ventricular hyperthroph
+                            </option>
+                          </select>
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <label for="detak-jantung" class="form-label">Masukan detak jantung maksimum anda</label>
+                        <input type="number" name="detak-jantung" class="form-control" id="detak-jantung" >
+                    </div>
+                    <div class="border p-3 mb-3 rounded" style="background-color:#eee ;">
+                        <div class="mt-3">
+                            <p>Apakah ketika melakukan aktivitas fisik berat seperti olahraga , dada anda terasa sakit</p>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fisik-berat" value="1" id="kelamin1">
+                            <label class="form-check-label" for="kelamin1">
+                                Iya
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fisik-berat" value="0" id="kelamin2" checked>
+                            <label class="form-check-label" for="kelamin2">
+                                Tidak ada
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-2">
+                        <label for="kadar-kolestrol" class="form-label">Masukkan nilai ST Depression :</label>
+                        <input type="number" name="ST-Depression" class="form-control" id="kadar-kolestrol" >
+                    </div>
+                    
+                    <div class="mb-3">
+                        <select name="segmen" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>kemiringan segmen ST latihan puncak:</option>
+                            <option value="0">upsloping  </option>
+                            <option value="1">flat
+                            </option>
+                            <option value="2">downsloping
+                            </option>
+                          </select>
+                    </div>
+                    <div class="mb-3">
+                        <select name="kapal" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>jumlah kapal utama (0-3) diwarnai oleh flourosopy</option>
+                            <option value="0">0  </option>
+                            <option value="1">1
+                            </option>
+                            <option value="2">2
+                            </option>
+                            <option value="2">2
+                            </option>
+                          </select>
+                    </div>
+                    <div class="mb-3">
+                        <select name="cacar" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>gejala cacar?</option>
+                            <option value="0">normal </option>
+                            <option value="1">cacat tetap
+                            </option>
+                            <option value="2">cacat reversibel
+                            </option>
+                          </select>
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-dark" name="submit">Prediksi</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
